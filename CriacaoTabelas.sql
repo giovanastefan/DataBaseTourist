@@ -28,7 +28,8 @@ CREATE TABLE estabelecimento (
 );
 
 CREATE TABLE endereco (
-    id_estabelecimento int primary key,
+    id int primary key auto_increment,
+    id_estabelecimento int not null,
     rua VARCHAR(100) NOT NULL,
     numero INT NOT NULL,
     bairro varchar(50) not null,
@@ -99,4 +100,3 @@ CREATE TABLE cupons (
   FOREIGN KEY (id_estabelecimento) REFERENCES estabelecimento(id)
   ON DELETE CASCADE
 );
-
