@@ -58,14 +58,6 @@ CREATE TABLE donoEstabelecimento (
     CONSTRAINT pk_donoEstabelecimento PRIMARY KEY clustered (id_usuario, id_estabelecimento)
 );
 
-CREATE TABLE lugaresVisitados (
-    id_usuario INT NOT NULL,
-    id_estabelecimento INT NOT NULL,
-    favorito boolean default false,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-    FOREIGN KEY (id_estabelecimento) REFERENCES estabelecimento(id)
-);
-
 CREATE TABLE avaliacao (
     id INT NOT NULL AUTO_INCREMENT,
     id_estabelecimento INT NOT NULL,
@@ -73,6 +65,7 @@ CREATE TABLE avaliacao (
     comentarios VARCHAR(100),
     nota float,
     data_avaliacao date default null,
+    favorito boolean default false,
     FOREIGN KEY (id_estabelecimento) REFERENCES estabelecimento(id)
     ON DELETE CASCADE,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
