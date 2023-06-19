@@ -15,3 +15,13 @@ FROM cupons
 WHERE id = @id_cupom;
 
 COMMIT;
+
+START TRANSACTION;
+
+UPDATE estabelecimento
+SET media_nota = (
+    SELECT AVG(nota)
+    FROM avaliacao
+    WHERE id_estabelecimento = 1
+)
+WHERE id = 1;
